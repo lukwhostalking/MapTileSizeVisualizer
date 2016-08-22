@@ -49,9 +49,9 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
     override func viewDidAppear(animated: Bool) {
         let (tileX,tileY) = getTileXY((mapView.userLocation?.coordinate.latitude)!, lon: (mapView.userLocation?.coordinate.longitude)!, zoom: zoomLevelForTileSize!)
         
-        for x in tileX-2*zoomLevelForTileSize! ... tileX+2*zoomLevelForTileSize!
+        for x in tileX-zoomLevelForTileSize! ... tileX+zoomLevelForTileSize!
         {
-            for y in tileY-2*zoomLevelForTileSize! ... tileY+2*zoomLevelForTileSize!
+            for y in tileY-zoomLevelForTileSize! ... tileY+zoomLevelForTileSize!
             {
                 drawTileAt(x, tileY: y)
             }
@@ -74,7 +74,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         let polygon = MGLPolygon(coordinates: &points, count: UInt(points.count))
         self.mapView.addAnnotation(polygon)
         
-
+        
         
         
     }
